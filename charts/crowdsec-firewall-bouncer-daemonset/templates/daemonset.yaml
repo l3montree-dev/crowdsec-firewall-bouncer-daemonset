@@ -54,7 +54,7 @@ spec:
           - |
             cp crowdsec-firewall-bouncer.yaml crowdsec-firewall-bouncer.processed.yaml && \
             echo "\napi_key: $API_KEY" >> crowdsec-firewall-bouncer.processed.yaml && \
-            sleep infinity
+            crowdsec-firewall-bouncer -c crowdsec-firewall-bouncer.processed.yaml
 
           env:
           - name: API_KEY
