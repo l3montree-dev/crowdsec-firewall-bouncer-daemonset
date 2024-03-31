@@ -1,8 +1,13 @@
-# Default values for crowdsec-firewall-bouncer-daemonset.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
+# needs to contain "apikey" key. The value should be the result of (cscli bouncers add ...)
+existingSecretName: crowdsec-firewall-bouncer-apikey
+crowdsecFirewallBouncer: |
+  mode: ipset
+  blacklists_ipv4: blacklists_ipv4
+  blacklists_ipv6: blacklists_ipv6
+  api_url: <Needs to be accessible outside the cluster (hostNetwork: true)>
+  deny_log: true
+  deny_action: REJECT
+# api key will be injected dynamically - based on the provided secret
 
 image:
   repository: ghcr.io/l3montree-dev/crowdsec-firewall-bouncer-daemonset

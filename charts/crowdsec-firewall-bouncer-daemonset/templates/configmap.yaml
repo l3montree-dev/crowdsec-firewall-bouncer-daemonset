@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crowdsec-firewall-bouncer-config
+data:
+  crowdsec-firewall-bouncer.yaml: |-
+{{ .Values.crowdsecFirewallBouncer | indent 4 }}
