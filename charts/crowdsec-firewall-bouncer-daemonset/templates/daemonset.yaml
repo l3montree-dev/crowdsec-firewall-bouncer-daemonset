@@ -33,9 +33,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           command:
-            # sleep forever
-            - sleep infinity
-            
+            - /bin/sh
+            - -c
+            - ./install_ipsets.sh
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
