@@ -26,7 +26,7 @@ jobs:
       id: build_image
       uses: docker://gcr.io/kaniko-project/executor:v1.9.2
       with:
-        args: --destination=${{ env.IMAGE_TAG }} --context=/github/workspace/charts/wazuh-agent-daemonset/oci-image --dockerfile=/github/workspace/charts/wazuh-agent-daemonset/oci-image/Dockerfile --no-push --tarPath /github/workspace/image.tar
+        args: --destination=${{ env.IMAGE_TAG }} --context=/github/workspace/ --dockerfile=/github/workspace/Dockerfile --no-push --tarPath /github/workspace/image.tar
     - name: Upload artifact
       # Uploading the built Docker image as an artifact
       uses: actions/upload-artifact@v4
