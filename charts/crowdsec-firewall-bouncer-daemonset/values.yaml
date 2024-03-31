@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: ghcr.io/l3montree-dev/crowdsec-firewall-bouncer-daemonset
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "unstable"
 
 imagePullSecrets: []
 nameOverride: ""
