@@ -2,11 +2,17 @@
 
 # Check if IP sets exist, and create them if not
 if ! ipset list | grep -q "blacklists_ipv4"; then
+    echo "creating blacklists_ipv4 ipset"
     ipset create blacklists_ipv4 hash:ip timeout 0 maxelem 150000
+else
+    echo "blacklists_ipv4 already exists"
 fi
 
 if ! ipset list | grep -q "blacklists_ipv6"; then
+    echo "creating blacklists_ipv6 ipset"
     ipset create blacklists_ipv6 hash:ip timeout 0 family inet6 maxelem 150000
+else
+    echo "blacklists_ipv6 already exists"
 fi
 
 # Check if iptables rules exist, and add them if not

@@ -35,7 +35,9 @@ spec:
           command:
             - /bin/sh
             - -c
-            - ./install_ipsets.sh
+            - ./install_ipsets.sh && echo "done installing ipsets"
+          securityContext:
+            privileged: true
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
