@@ -3,6 +3,16 @@ entries:
   crowdsec-firewall-bouncer-daemonset:
   - apiVersion: v2
     appVersion: 0.1.2
+    created: "2024-04-01T15:08:46.362737822Z"
+    description: A Helm chart for Kubernetes
+    digest: ceaa34729d2f3a512b4cb15ada9058e529649410f55413b5ea2a859aebbcb46d
+    name: crowdsec-firewall-bouncer-daemonset
+    type: application
+    urls:
+    - https://github.com/l3montree-dev/crowdsec-firewall-bouncer-daemonset/releases/download/crowdsec-firewall-bouncer-daemonset-0.1.3/crowdsec-firewall-bouncer-daemonset-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.1.2
     created: "2024-03-31T11:55:22.895995853Z"
     description: A Helm chart for Kubernetes
     digest: 370ac233c77ccd3a511a223d3134fd8893a2099bfccbc728083bab06c526bd2a
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/l3montree-dev/crowdsec-firewall-bouncer-daemonset/releases/download/crowdsec-firewall-bouncer-daemonset-0.1.0/crowdsec-firewall-bouncer-daemonset-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-31T11:55:22.896028124Z"
+generated: "2024-04-01T15:08:46.362954561Z"
