@@ -53,24 +53,24 @@ spec:
           - -c
           - |
             cp crowdsec-firewall-bouncer.yaml crowdsec-firewall-bouncer.processed.yaml && \
-            echo "\napi_key: $API_KEY" >> crowdsec-firewall-bouncer.processed.yaml && \
+            { grep -q "^${HOSTNAME}:" /keys/apikeys.yaml && \
+            cat /keys/apikeys.yaml | awk -v hostname="${HOSTNAME}" -F': ' '$1 == hostname {print "\napi_key: " $2}' >> crowdsec-firewall-bouncer.processed.yaml || \
+            { echo "Error: Hostname '$HOSTNAME' not found in '/keys/apikeys.yaml'"; exit 1; }; } && \
             crowdsec-firewall-bouncer -c crowdsec-firewall-bouncer.processed.yaml
-
-          env:
-          - name: API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: {{.Values.existingSecretName}}
-                key: "apikey"
           volumeMounts:
           - name: crowdsec-firewall-bouncer-config
             mountPath: /crowdsec-firewall-bouncer.yaml
             subPath: crowdsec-firewall-bouncer.yaml
+          - name: apikeys
+            mountPath: "/keys"
 
       volumes:
       - name: crowdsec-firewall-bouncer-config
         configMap:
           name: crowdsec-firewall-bouncer-config
+      - name: apikeys
+        secret:
+          secretName: {{.Values.existingSecretName}}
   
       {{- with .Values.nodeSelector }}
       nodeSelector:
